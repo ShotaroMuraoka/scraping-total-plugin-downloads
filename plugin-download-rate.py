@@ -1,4 +1,5 @@
 import requests
+import chromedriver_binary
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -14,10 +15,9 @@ html = requests.get(load_url)
 soup = BeautifulSoup(html.content, "html.parser")
 links = soup.select(".plugin-info-container > h3 > a")
 
-options = Options()
-options.set_headless(True)
-driver = webdriver.Chrome(chrome_options=options)
-
+opts = Options()
+opts.headless = True
+driver = webdriver.Chrome(options=opts)
 
 print("Plugin Name | Total Downloads")
 for link in links:
@@ -31,3 +31,5 @@ for link in links:
     td_data = table.select("td")[-1]
 
     print(plugin_title + " | " + td_data.get_text())
+
+driver.quit()

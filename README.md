@@ -4,9 +4,11 @@
 ## ライブラリのインストール
 以下の手順で必要なライブラリをインストールする
 ```
+pip install requests
 pip install beautifulsoup4
 pip install python-dotenv
 pip install selenium
+pip install chromedriver-binary={Chromeのバージョン}
 ```
 ## 環境定数
 1. `.env.sample` ファイルをコピーして `.env` ファイルを作成する
